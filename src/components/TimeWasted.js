@@ -39,11 +39,7 @@ class TimeWasted extends Component {
     const getMeasurements = this.props.perf.getWasted ? this.props.perf.getWasted : this.props.perf.getMeasurementsSummaryMap;
     console.log('--->>', this.props.perf.getMeasurementsSummaryMap(this.props.perf._allMeasurements));
     const measurements = getMeasurements(this.props.perf._allMeasurements)
-      .filter(measurement => {
-        const label = measurement['Owner > component']
-          .split(' > ').pop();
-        return !excludedComponents.includes(label);
-      });
+      .filter(measurement => !excludedComponents.includes(measurement.key));
 
     const timeWasted = {
       measurements,
